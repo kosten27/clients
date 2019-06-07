@@ -15,7 +15,7 @@ public class CallIdentity {
     @NotNull
     private Duration duration;
     @NotNull
-    private Long cityId;
+    private String city;
 
     public String getCallersPhoneNumber() {
         return callersPhoneNumber;
@@ -49,11 +49,11 @@ public class CallIdentity {
         this.duration = duration;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public String getCity() {
+        return city;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCity(String city) {
+        this.city = city;
     }
 }

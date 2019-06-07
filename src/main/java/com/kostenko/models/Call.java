@@ -1,5 +1,10 @@
 package com.kostenko.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,17 +21,24 @@ public class Call {
     private Long id;
     @OneToOne
     @NotNull
+    @JsonBackReference
+    private Client client;
+    @OneToOne
+    @NotNull
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "number")
+    @JsonIdentityReference(alwaysAsId = true)
     private PhoneNumber callersPhoneNumber;
     @OneToOne
     @NotNull
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "number")
+    @JsonIdentityReference(alwaysAsId = true)
     private PhoneNumber recipientsPhoneNumber;
     @NotNull
     private Date date;
     @NotNull
     private Duration duration;
-    @OneToOne
     @NotNull
-    private City city;
+    private String city;
 
     public Call() {
     }
@@ -71,11 +83,19 @@ public class Call {
         this.duration = duration;
     }
 
-    public City getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(String city) {
         this.city = city;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

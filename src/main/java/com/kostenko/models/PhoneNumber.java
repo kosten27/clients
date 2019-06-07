@@ -1,8 +1,7 @@
 package com.kostenko.models;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -13,8 +12,6 @@ public class PhoneNumber {
     @Id
     private String number;
     @ManyToOne
-//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-//    @JsonIdentityReference(alwaysAsId = true)
     @JsonBackReference
     private Client client;
 
