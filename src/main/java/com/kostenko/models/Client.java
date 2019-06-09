@@ -1,7 +1,6 @@
 package com.kostenko.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,6 +21,8 @@ public class Client {
     private Gender gender;
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "number")
+    @JsonIdentityReference(alwaysAsId = true)
     private List<PhoneNumber> phoneNumbers;
 
     public Client() {

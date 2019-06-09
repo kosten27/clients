@@ -1,10 +1,11 @@
-package com.kostenko.models;
+package com.kostenko.dto;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.Duration;
 import java.util.Date;
 
-public class CallIdentity {
+public class CallDto implements Serializable {
 
     @NotNull
     private String callersPhoneNumber;
